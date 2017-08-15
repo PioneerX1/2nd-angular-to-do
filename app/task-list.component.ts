@@ -11,10 +11,12 @@ import { Task } from './task.model';
   </select>
 
   <ul class="list-group">
-    <li class="list-group-item" (click)="isDone(currentTask)" *ngFor="let currentTask of childTaskList | completeness:filterByCompleteness">{{currentTask.description}} <span class="badge">priority: {{currentTask.priority}}</span>
+    <li [class]="priorityColor(currentTask)" (click)="isDone(currentTask)" *ngFor="let currentTask of childTaskList | completeness:filterByCompleteness">
+      {{currentTask.description}} <span class="badge">priority: {{currentTask.priority}}</span>
     <input *ngIf="currentTask.done === true" type="checkbox" checked (click)="toggleDone(currentTask, false)"/>
     <input *ngIf="currentTask.done === false" type="checkbox" (click)="toggleDone(currentTask, true)"/>
-    <button (click)="editButtonHasBeenClicked(currentTask)">Edit!</button></li>
+    <button (click)="editButtonHasBeenClicked(currentTask)">Edit!</button>
+    </li>
   </ul>
   `
 })
@@ -47,11 +49,11 @@ export class TaskListComponent {
 
   priorityColor(currentTask){
     if (currentTask.priority === 3){
-      return "bg-danger";
+      return "list-group-item list-group-item-danger";
     } else if (currentTask.priority === 2) {
-      return  "bg-warning";
+      return  "list-group-item list-group-item-warning";
     } else {
-      return "bg-info";
+      return "list-group-item list-group-item-info";
     }
   }
 }
