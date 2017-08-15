@@ -5,7 +5,7 @@ import { Task } from './task.model';
   selector: 'task-list',
   template: `
   <ul class="list-group">
-    <li class="bg-info list-group-item" (click)="isDone(currentTask)" *ngFor="let currentTask of childTaskList">{{currentTask.description}} <span class="badge">priority: {{currentTask.priority}}</span><button (click)="editButtonHasBeenClicked(currentTask)">Edit!</button></li>
+    <li class="list-group-item" (click)="isDone(currentTask)" *ngFor="let currentTask of childTaskList">{{currentTask.description}} <span class="badge">priority: {{currentTask.priority}}</span><button (click)="editButtonHasBeenClicked(currentTask)">Edit!</button></li>
   </ul>
   `
 })
